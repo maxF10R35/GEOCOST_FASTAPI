@@ -19,7 +19,10 @@ services:
       DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-geocost}:${POSTGRES_PASSWORD:-geocost_dev}@db:5432/${POSTGRES_DB:-geocost}
       CORS_ORIGINS: '["http://localhost:5173"]'
     ports: ["8100:8000"]
-    volumes: ["../backend:/app"]
+    volumes:
+      - ../backend:/app
+      - ../legacy/data:/data/legacy:ro
+      - ../datos:/data/raw:ro
     depends_on:
       db:
         condition: service_healthy
