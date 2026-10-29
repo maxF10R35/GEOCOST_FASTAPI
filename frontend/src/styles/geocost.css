@@ -1,0 +1,762 @@
+
+:root{--blue:#0000B3;--red:#F22331;--navy:#07395c;--ink:#12324f;--line:#dce6f0;--bg:#eef4f8;--panel:#ffffff;--good:#def5e8;--header-h:clamp(59px,7.5vh,76px)}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font:14px/1.35 "Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink)}
+button,input,select{font:inherit}
+.app-header{height:var(--header-h);background:#fff;border-bottom:1px solid #dfe7ef;display:flex;align-items:center;padding:0 18px;gap:24px;position:relative;z-index:1200}
+.brand-block{display:flex;align-items:center;gap:14px;min-width:350px}
+.cemex-logo-full{width:58px;height:48px;object-fit:contain}.brand-name{font-size:28px;font-weight:900;color:var(--blue);letter-spacing:-.3px}.brand-sub{font-size:12px;color:#667b8f}.product-block{border-left:1px solid var(--line);padding-left:28px;line-height:1}.product-name{font-size:48px;font-weight:900;color:#113760;letter-spacing:-1.8px}.product-name span{color:var(--blue)}.product-sub{font-size:20px;font-weight:800;color:#11416a;margin-top:5px}.header-actions{margin-left:auto;display:flex;gap:12px}.header-btn{background:#fff;border:1px solid #d5e0eb;border-radius:14px;padding:14px 24px;font-weight:800;color:#16395d;cursor:pointer}.header-btn:hover,.header-btn.layer-active{border-color:var(--blue);color:var(--blue);box-shadow:0 0 0 3px #0000b312}
+
+#welcome{position:fixed;top:var(--header-h);right:0;bottom:0;left:0;z-index:1100;overflow:hidden}.welcome-screen .welcome-bg{position:absolute;inset:0;background:url('assets/portada-cinematica-2026.jpg') center/cover no-repeat}.welcome-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,24,45,.80),rgba(6,24,45,.62) 42%,rgba(6,24,45,.12) 80%)}.welcome-card{position:absolute;left:6%;top:50%;transform:translateY(-50%);width:min(640px,85vw);background:rgba(255,255,255,.92);border-radius:28px;padding:34px 38px;box-shadow:0 20px 40px rgba(4,25,47,.28)}.eyebrow{font-size:12px;color:#68809a;font-weight:800;letter-spacing:1.5px}.welcome-card h1{margin:8px 0 0;font-size:72px;line-height:1;color:#0b3558;letter-spacing:-2px}.welcome-card h1 span{color:var(--blue)}.welcome-card h2{margin:4px 0 16px;font-size:34px;color:#0e4370}.welcome-card h3{margin:0 0 12px;font-size:24px;color:#16265f}.welcome-card p{font-size:17px;color:#4a647f;line-height:1.45}.start-btn{margin-top:16px;background:linear-gradient(90deg,#0057ff,#234de6);border:0;color:#fff;font-weight:800;font-size:22px;padding:16px 34px;border-radius:16px;cursor:pointer}.hero-features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;padding-top:20px;border-top:1px solid #dbe4ec}.hero-features b{display:block;color:#0f3860}.hero-features span{display:block;color:#667f97;font-size:13px;margin-top:5px}
+.app-shell{display:grid;grid-template-columns:320px minmax(540px,1fr) 390px;grid-template-rows:minmax(0,1fr) 178px;gap:10px;height:calc(100vh - var(--header-h));padding:10px;min-height:0}.app-hidden{display:none}.left-column,.right-column{display:flex;flex-direction:column;gap:8px;min-height:0;overflow:hidden}.left-column{padding-right:2px}.right-column{display:grid;grid-template-rows:215px minmax(0,1fr)}.map-column{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#dbeaf3;min-width:0;min-height:0}.bottom-row{grid-column:2 / 4;grid-row:2;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-height:0}.card-panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 2px 6px rgba(10,31,53,.03);min-height:0}.panel h3{margin:0;padding:10px 12px;background:var(--navy);color:#fff;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:space-between}.panel .body{padding:10px 12px}.close{background:none;border:0;color:#fff;font-size:28px;line-height:1;cursor:pointer}.panel label{display:block;font-weight:700;color:#153858;margin:8px 0 5px}.input-row{display:flex;gap:8px;align-items:center}input:not([type="radio"]):not([type="checkbox"]),select{width:100%;padding:8px 10px;border:1px solid #cfdbe7;border-radius:10px;background:#fff;outline:none}.input-row input{flex:1}.badge-demand{flex:0 0 auto;background:#ffefef;color:#e53030;font-weight:800;border:1px solid #f6c8c8;padding:8px 10px;border-radius:10px}.hint{color:#687f94;font-size:12px;line-height:1.4}.good{background:#ecf8f0;border:1px solid #caefd6;border-radius:10px;padding:8px;font-size:12px}.error{color:#ce2740;font-weight:700;font-size:12px}.subgroup{margin-top:12px}.subhead{font-weight:800;color:#17385a;margin-bottom:8px}.alt-origins .site{margin:6px 0}
+.radio-line{display:flex;gap:16px;flex-wrap:wrap}.radio-line label,.checkline{display:flex;align-items:center;gap:6px;font-weight:700;color:#1d4168}.unit-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.unit-btn{padding:9px 4px;border:1px solid #d3ddea;border-radius:10px;background:#fff;font-weight:800;color:#173b61;cursor:pointer;font-size:11px;line-height:1.1}.unit-btn.active{background:#edf4ff;border-color:#2f5fff;color:#2154f3;box-shadow:inset 0 0 0 2px #2f5fff}.present-wrap{display:flex;gap:8px;margin-top:8px}.present-btn{flex:1;padding:8px 8px;border-radius:10px;border:1px solid #d0dbe7;background:#fff;font-weight:800;color:#15395f;cursor:pointer}.present-btn.selected{background:#0a34ff;color:#fff;border-color:#0a34ff}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}.fullwidth{grid-column:1 / -1}.button-bar{display:flex;gap:8px}.widebtn{flex:1}.primary,.secondary,.smallbtn{border-radius:12px;padding:9px 12px;font-weight:800;cursor:pointer}.primary{background:#0b34ff;color:#fff;border:0}.secondary,.smallbtn{background:#fff;border:1px solid #cdd9e5;color:#204267}.smallbtn{width:100%}
+
+.map-topbar{position:absolute;z-index:600;top:14px;left:14px;display:flex;gap:10px}.seg{display:flex;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 4px 14px rgba(6,31,53,.08)}.seg button{border:0;background:#fff;padding:10px 18px;font-weight:800;color:#234567;cursor:pointer}.seg button.selected{background:var(--navy);color:#fff}.search-faux{width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer}.heat-overlay-toggle{position:absolute;left:16px;bottom:72px;z-index:650;border:1px solid #d2deea;background:#fff;padding:10px 14px;border-radius:12px;font-weight:800;color:#15395f;box-shadow:0 4px 12px rgba(6,31,53,.08);cursor:pointer}.heat-overlay-toggle.enabled{border-color:#0a70b9;color:#0a70b9}.map-legend{position:absolute;left:16px;bottom:16px;z-index:650;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);padding:10px 12px;border-radius:12px;min-width:370px;box-shadow:0 6px 18px rgba(6,31,53,.12)}.legend-row{display:grid;grid-template-columns:14px auto 14px auto 14px auto 14px auto 14px auto;gap:6px 8px;align-items:center;margin:8px 0 6px}.legend-row span:nth-child(odd){display:block;width:14px;height:10px;border-radius:3px}#map{width:100%;height:100%}
+
+#summary .metricgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}#summary .metric{padding:10px;border:1px solid #e5edf4;border-radius:10px;background:#fbfdff}#summary .metric small{display:block;color:#6f8497}#summary .metric b{display:block;font-size:23px;color:#13365d;margin-top:4px}#summary b{color:#11385e}.priceTable{width:100%;border-collapse:collapse;font-size:12px}.priceTable td{padding:5px 4px;border-bottom:1px solid #e7eef4}.priceTable td:last-child{text-align:right;font-weight:800}.priceTable tr:last-child{background:#edf4ff}.costhero{background:#f2f7ff;border-left:4px solid var(--red);border-radius:8px;padding:10px 12px;margin-bottom:10px}.costhero strong{display:block;font-size:34px;color:#12365b}.costhero small{display:block;color:#6b8399}.report-actions{margin-top:10px}
+
+#originQuoteResults{height:100%;overflow:auto}.site{display:flex;justify-content:space-between;gap:10px;align-items:center;border:1px solid #e2ebf2;border-radius:10px;padding:10px;margin-bottom:8px;background:#fff}.site button{border:1px solid #d4deea;background:#eef4ff;color:#0b34ff;font-weight:800;padding:8px 12px;border-radius:8px;cursor:pointer}.origin-quote b{display:block;color:#0b34ff;margin-top:4px}
+.visually-hidden{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.hidden{display:none!important}
+.catalog-shade,.workspace-top,#rail,.floating{display:none!important}
+.cemex-pin-wrap{background:none;border:none}.cemex-pin{display:grid;place-items:center;width:34px;height:34px;background:#fff;border:2px solid var(--blue);border-radius:50%}.cemex-pin img{width:22px;height:18px;object-fit:contain}.geocost-front-wrap{background:none;border:none}.geocost-front{display:block;width:12px;height:12px;background:#1a58f4;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 2px #1a58f4}
+@media(max-width:1500px){.app-shell{grid-template-columns:300px minmax(460px,1fr) 350px;grid-template-rows:minmax(0,1fr) 168px}.product-name{font-size:40px}} 
+@media(max-width:1200px){.app-shell{grid-template-columns:280px minmax(320px,1fr) 300px;grid-template-rows:minmax(0,1fr) 190px}.unit-grid{grid-template-columns:repeat(3,1fr)}.product-name{font-size:34px}.product-sub{font-size:18px}.right-column{grid-template-rows:200px minmax(0,1fr)}}
+@media(max-width:900px){.app-header{height:auto;flex-wrap:wrap;padding:12px}.brand-block{min-width:0}.product-block{border-left:0;padding-left:0}.header-actions{width:100%;justify-content:flex-end}.app-shell{height:auto;grid-template-columns:1fr;grid-template-rows:auto 420px auto auto}.left-column,.right-column{overflow:visible}.map-column{height:420px}.bottom-row{grid-column:1;grid-row:auto}.welcome-card{width:92vw;left:4%}.hero-features{grid-template-columns:1fr}}
+
+.comparison-wrap{overflow:auto;}
+.bottom-row .body{height:100%;overflow:auto}
+#originQuoteResults table{width:100%}
+
+/* Reporte ejecutivo: interfaz y documento imprimible */
+.exec-modal[hidden]{display:none!important}.exec-modal{position:fixed;inset:0;z-index:6000;background:#092d4acc;display:flex;align-items:center;justify-content:center;padding:20px}.exec-page{background:#fff;border-radius:10px;width:min(1450px,98vw);max-height:95vh;overflow:auto;padding:18px 24px;color:#0b2d50;box-shadow:0 25px 70px #071b3566}.exec-controls{display:flex;justify-content:flex-end;gap:10px;position:sticky;top:0;background:#fff;padding:6px 0 13px}.exec-controls button{border:1px solid #c9d8e7;padding:10px 15px;background:#fff;border-radius:7px;font-weight:700;cursor:pointer}.exec-controls button:last-child{background:#0000b3;color:#fff}.exec-head{display:flex;align-items:center;gap:18px;border-bottom:3px solid #0000b3;padding:12px 0}.exec-head img{width:72px}.exec-head h1{font-size:27px;margin:0}.exec-head h2{font-size:16px;font-weight:600;margin:4px 0}.exec-meta{display:flex;gap:9px 18px;flex-wrap:wrap;padding:13px 0}.exec-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.exec-summary>div{border:1px solid #d8e5ef;border-radius:7px;padding:12px;background:#f3f7fa}.exec-summary span{display:block;color:#637b90;font-size:12px}.exec-summary b{font-size:18px}.exec-page h3{background:#07395c;color:white;padding:9px 12px;font-size:15px;margin:17px 0 0}.exec-table-scroll{overflow-x:auto}.exec-page table{border-collapse:collapse;width:100%;font-size:11px;white-space:nowrap}.exec-page th,.exec-page td{padding:7px 8px;text-align:left;border-bottom:1px solid #dbe5ee}.exec-page th{background:#e9f1f7}.exec-page tbody tr:nth-child(even){background:#f8fbfe}.exec-page p{font-size:12px;line-height:1.55}
+@media print{@page{size:landscape;margin:10mm}body> :not(.exec-modal){display:none!important}.exec-modal{display:block;position:static;background:none;padding:0}.exec-page{overflow:visible;width:100%;max-height:none;box-shadow:none;padding:0}.exec-controls{display:none}.exec-page table{font-size:9px}.exec-page td,.exec-page th{padding:4px}.exec-page h3{break-after:avoid}}
+
+/* V10: escritorio compacto; corrección de radios y casillas */
+input[type="radio"],input[type="checkbox"]{width:16px!important;height:16px!important;padding:0!important;margin:0!important;flex:none;accent-color:#0000b3}
+.radio-line{gap:10px;flex-wrap:nowrap;justify-content:space-between}.radio-line label,.checkline{margin:3px 0!important;display:inline-flex!important;align-items:center;gap:5px;white-space:nowrap;font-size:11px}
+.app-shell{grid-template-columns:minmax(300px,21%) minmax(440px,1fr) minmax(315px,25%);grid-template-rows:minmax(0,1fr) 185px;overflow:hidden}
+.left-column,.right-column{overscroll-behavior:contain;scrollbar-width:thin;gap:6px}
+.card-panel{flex-shrink:0}.left-column .panel h3,.right-column .panel h3{font-size:13px!important;padding:7px 10px!important;min-height:30px}.left-column .panel .body,.right-column .panel .body{padding:7px 10px!important}
+.left-column .panel label{margin:5px 0 3px;font-size:11px}
+.left-column input:not([type="radio"]):not([type="checkbox"]),.left-column select{padding:7px 8px;font-size:12px;border-radius:5px;min-height:32px}
+.left-column .badge-demand{font-size:10px;padding:6px 5px;white-space:nowrap}
+.left-column .subgroup{margin-top:7px}.left-column .hint{margin:5px 0;font-size:10px}
+.unit-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}.unit-btn{min-width:0;font-size:10px;padding:15px 1px 7px;position:relative;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:6px}
+.unit-btn:before{content:'▰';position:absolute;top:1px;left:0;right:0;font-size:15px;color:#124979}
+.present-wrap{margin-top:6px}.present-btn{padding:5px;font-size:11px;border-radius:5px}.two-col{gap:6px}.button-bar{gap:6px}.button-bar button{font-size:10px;padding:7px 4px;border-radius:6px}
+#p-ruta .site{margin:4px 0;padding:4px 5px;border-radius:5px;font-size:10px}#p-ruta .site button{padding:5px;font-size:10px}
+#p-ruta .alt-origins{max-height:120px;overflow-y:auto}
+.map-column{grid-column:2;grid-row:1}.right-column{grid-column:3;grid-row:1}.left-column{grid-column:1;grid-row:1}.bottom-row{grid-column:2 / 4;grid-row:2}
+.map-legend{min-width:0;width:min(390px,90%);bottom:12px;left:12px}.heat-overlay-toggle{left:12px;bottom:105px}
+#summary .metricgrid{gap:4px}#summary .metric{padding:5px}#summary .metric b{font-size:16px}#summary .metric small{font-size:10px}
+.costhero strong{font-size:24px}.priceTable{font-size:10px}.priceTable td{padding:3px}.right-column .hint{font-size:10px}
+.bottom-row .body{padding:6px!important}.bottom-row h3{font-size:13px!important;padding:7px 12px!important}
+@media(max-width:1250px){.app-shell{grid-template-columns:265px minmax(330px,1fr) 300px}.brand-block{min-width:240px}.product-name{font-size:32px}.header-btn{padding:8px 12px}}
+@media(max-width:950px){.app-shell{grid-template-columns:240px minmax(320px,1fr) 270px;overflow-x:auto}.app-header{min-width:850px}.bottom-row{grid-column:2 / 4}}
+
+/* V11: compactación para evitar deslizadores internos y liberar todo el mapa. */
+html,body{overflow:hidden}
+.app-shell{grid-template-rows:minmax(0,1fr) 185px;height:calc(100dvh - var(--header-h))}
+.left-column{overflow-y:hidden;gap:5px;min-width:0}
+.left-column .card-panel{flex:0 0 auto}
+.left-column .panel .body{padding:6px 9px!important}
+.left-column .panel h3{padding:6px 10px!important;min-height:27px;font-size:12px!important}
+.left-column .panel label{margin:3px 0 2px;font-size:10px}
+.left-column input:not([type="radio"]):not([type="checkbox"]),.left-column select{min-height:29px;padding:4px 8px}
+#p-ruta .subgroup{margin-top:4px}
+#p-ruta #alternatives{max-height:43px;overflow:hidden;font-size:10px}
+#p-ruta #alternatives .site{display:none}
+#p-ruta .hint{margin:2px 0;font-size:9px}
+.unit-btn{padding-top:13px;padding-bottom:5px}
+.present-wrap{margin-top:4px}
+.good{padding:4px 6px}
+#p-demanda-visual .body{padding-top:3px!important;padding-bottom:5px!important}
+#p-ajustes .body{padding-top:3px!important}
+.right-column{overflow-y:auto;scrollbar-width:none}
+.right-column::-webkit-scrollbar{display:none}
+#p-resumen .body{max-height:175px;overflow:hidden}
+#p-costos .body{font-size:11px}
+.map-column{min-height:0}
+.search-results{position:relative;max-height:168px;overflow:auto;background:white;border:1px solid #b7cfeb;border-radius:5px;box-shadow:0 5px 14px #0a31552e;z-index:990}
+.search-results[hidden]{display:none}
+.search-option{display:block;width:100%;padding:7px 8px;text-align:left;background:white;border:0;border-bottom:1px solid #edf2f7;color:#143d65;cursor:pointer;font-size:11px}
+.search-option:hover{background:#ebf3ff}
+@media(max-height:790px) and (min-width:951px){.app-shell{grid-template-rows:minmax(0,1fr) 154px}.left-column .panel h3{min-height:25px;padding:5px 8px!important}.left-column .panel .body{padding:4px 8px!important}.left-column .panel label{margin:2px 0 1px}.left-column input:not([type="radio"]):not([type="checkbox"]),.left-column select{min-height:26px;padding:3px 7px}.unit-btn{padding-top:10px;padding-bottom:4px}.present-wrap{margin-top:3px}}
+
+/* V12: siluetas por configuración, sin capacidades en tarjetas */
+.unit-btn{display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:3px 1px!important;min-height:53px!important;overflow:visible!important;font-size:10px!important}
+.unit-btn::before{content:none!important;display:none!important}
+.unit-btn .vehicle-svg{width:60px;max-width:100%;height:29px;display:block;color:#093d64}
+.unit-btn.active .vehicle-svg{color:#0347f8}
+.unit-btn span{display:block;line-height:1.1}
+
+/* V13: columna izquierda a toda la altura del área de trabajo.
+   El mapa y el comparativo mantienen sus tamaños. */
+@media (min-width:951px){
+  .app-shell > .left-column{grid-column:1!important;grid-row:1 / 3!important;align-self:stretch!important;height:100%!important;min-height:0!important;display:flex!important;flex-direction:column!important;overflow:hidden!important;gap:8px!important}
+  .app-shell > .left-column > .card-panel{flex:0 0 auto!important;min-height:0}
+  .app-shell > .left-column > #p-ajustes{flex:1 1 auto!important;display:flex!important;flex-direction:column!important;min-height:0!important}
+  .app-shell > .left-column > #p-ajustes > .body{flex:1 1 auto!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important;min-height:0!important}
+  .app-shell > .left-column > #p-ajustes .button-bar{margin-top:auto!important;padding-top:12px!important}
+  .app-shell > .bottom-row{grid-column:2 / 4!important;grid-row:2!important}
+}
+
+/* V14: quitar Fecha y condiciones, mantener acciones visibles en Demanda/carga. */
+@media (min-width:951px){
+  .app-shell > .left-column > #p-demanda-visual{flex:1 1 auto!important;display:flex;flex-direction:column;min-height:0}
+  .app-shell > .left-column > #p-demanda-visual > .body{flex:1;align-content:start;align-items:start;grid-auto-rows:min-content}
+  .app-shell > .left-column > #p-demanda-visual .final-actions{margin-top:auto;align-self:end}
+}
+.final-actions{display:flex;gap:8px;margin-top:12px;align-items:stretch}
+.final-actions button{min-height:38px;flex:1}
+
+/* V15 — comparativo ejecutivo horizontal, sin tarjetas ni scroll interno */
+.bottom-row .comparison-wrap{padding:0!important;overflow:hidden!important;min-height:0;flex:1}
+#originQuoteResults{height:100%;overflow:hidden!important;font-size:11px}
+.comparison-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#f5f8fc;padding:6px 12px;color:#425d78;border-bottom:1px solid #dde7f0;white-space:nowrap}
+.comparison-meta strong{color:#0d3558}
+.executive-table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:11px}
+.executive-table th{background:#eaf1f8;color:#113b5f;text-align:left;padding:6px 9px;font-size:10px;font-weight:800;white-space:nowrap;border-bottom:1px solid #d5e3ee}
+.executive-table td{padding:6px 9px;border-bottom:1px solid #e8eef5;color:#294866;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.executive-table th:first-child,.executive-table td:first-child{width:17%}
+.executive-table th:last-child,.executive-table td:last-child{width:9%}
+.executive-table tbody tr:last-child td{border-bottom:0}
+.executive-table .origin-current{background:#eff6ff}
+.executive-table .best-route{background:#eef9f4}
+.executive-table td strong{color:#0d335b}
+.origin-tag{display:inline-block;margin-left:6px;padding:2px 5px;border-radius:4px;background:#dce9ff;color:#114ab0;font-size:9px;font-weight:800}
+.origin-tag.recommended{background:#d9f4e6;color:#08764b}
+.selected-route{font-weight:800;color:#194f85}
+.route-action{background:#f5f8ff;border:1px solid #b8cceb;color:#003cbe;border-radius:6px;padding:4px 8px;font-size:10px;font-weight:800;cursor:pointer}
+.route-action:hover{background:#e4edff}
+.comparison-footnote{padding:5px 12px;font-size:9px;color:#647d94;white-space:normal}
+@media (min-width:951px){.bottom-row{min-height:166px!important}.app-shell{grid-template-rows:minmax(0,1fr) 175px!important}}
+@media (max-width:1100px){.executive-table{font-size:9px}.executive-table th,.executive-table td{padding:5px 4px}.comparison-meta{font-size:10px}}
+
+/* V16 · Diseño optimizado para escritorio a escala de navegador 80–90%.
+   Mantiene columnas fijas, comparativo y mapa sin scroll interno. */
+@media(min-width:951px){
+ body{overflow:hidden}
+ .app-header{height:var(--header-h)!important;padding:0 14px!important;gap:15px!important}
+ .brand-block{min-width:245px!important;gap:10px!important}
+ .cemex-logo-full{width:49px!important;height:40px!important}
+ .brand-name{font-size:22px!important}.brand-sub{font-size:10px!important}
+ .product-block{padding-left:18px!important}
+ .product-name{font-size:clamp(28px,3vw,38px)!important}
+ .product-sub{font-size:15px!important;margin-top:2px!important}
+ .header-btn{padding:8px 15px!important;border-radius:10px!important;font-size:12px!important}
+ .app-shell{height:calc(100dvh - var(--header-h))!important;padding:7px!important;gap:7px!important;grid-template-columns:clamp(267px,22vw,322px) minmax(0,1fr) clamp(295px,24vw,365px)!important;grid-template-rows:minmax(0,1fr) clamp(150px,20.5vh,180px)!important;overflow:hidden!important}
+ .app-shell>.left-column{gap:6px!important;overflow:hidden!important}
+ .left-column>.card-panel{border-radius:8px!important}
+ .left-column .panel h3{font-size:12px!important;min-height:29px!important;padding:6px 10px!important}
+ .left-column .panel .body{padding:7px 9px!important}
+ .left-column .panel label{font-size:10px!important;margin:4px 0 2px!important}
+ .left-column input:not([type=radio]):not([type=checkbox]),.left-column select{height:30px!important;min-height:0!important;padding:5px 7px!important;font-size:11px!important}
+ .left-column .hint{font-size:9px!important;margin:4px 0!important}
+ .unit-grid{gap:4px!important}
+ .unit-btn{min-height:48px!important;font-size:9px!important}
+ .unit-btn .vehicle-svg{height:23px!important;width:54px!important}
+ .present-wrap{margin-top:4px!important}
+ .present-btn{padding:6px 4px!important;font-size:11px!important}
+ .radio-line{gap:8px!important}.radio-line label{font-size:10px!important}
+ .left-column .final-actions{margin-top:auto!important;gap:6px!important}
+ .final-actions button{min-height:32px!important;padding:6px 7px!important;font-size:10px!important}
+ .right-column{overflow:hidden!important;gap:7px!important}
+ .right-column .card-panel{flex:0 0 auto!important}
+ .right-column .panel h3,.bottom-row h3{font-size:12px!important;padding:7px 11px!important;min-height:30px!important}
+ .right-column .panel .body{padding:7px 9px!important}
+ .right-column #summary .metricgrid{gap:4px!important}
+ .right-column #summary .metric{padding:5px!important}
+ .right-column #summary .metric b{font-size:14px!important;margin-top:1px!important}
+ .right-column #summary .metric small{font-size:9px!important}
+ .right-column .priceTable{font-size:10px!important;margin:5px 0!important}
+ .right-column .priceTable td{padding:3px!important}
+ .right-column .costhero{padding:6px 8px!important;margin-bottom:4px!important}
+ .right-column .costhero strong{font-size:21px!important}
+ .right-column .hint{font-size:9px!important;line-height:1.25!important}
+ .bottom-row{min-height:0!important}
+ .bottom-row .comparison-wrap{overflow:hidden!important}
+ .executive-table th,.executive-table td{padding:4px 6px!important}
+ .comparison-meta{padding:4px 9px!important}
+ .comparison-footnote{padding:3px 9px!important}
+ #originQuoteResults{overflow:hidden!important}
+ .map-column{min-height:0!important}
+}
+@media(min-width:951px) and (max-height:670px){
+ .app-shell{grid-template-rows:minmax(0,1fr) 135px!important}
+ .left-column .panel .body{padding:4px 8px!important}
+ .left-column .panel h3{min-height:25px!important;padding:4px 8px!important}
+ .unit-btn{min-height:41px!important}
+ .left-column .final-actions{margin-top:3px!important}
+ .right-column .hint{display:none}
+}
+@media(max-width:950px){body{overflow:auto}}
+
+
+/* V17: editor de costos en la columna izquierda; no comprime mapa o módulos */
+.left-column{position:relative!important;isolation:isolate}
+.cost-settings-entry{margin-top:4px}
+#openCostSettings{width:100%;border:1px solid #bed1e8;border-radius:7px;background:#eaf2ff;color:#073c81;font-weight:800;cursor:pointer;padding:7px 9px;font-size:11px}
+#openCostSettings:hover,#openCostSettings[aria-expanded="true"]{border-color:#0000b3;background:#dfeaff}
+#cost-settings-panel[hidden]{display:none!important}
+#cost-settings-panel{position:absolute!important;inset:0!important;z-index:850!important;display:flex!important;flex-direction:column!important;background:#fff!important;max-height:100%!important;overflow:hidden!important;box-shadow:0 8px 25px #102e4c33}
+#cost-settings-panel h3{flex-shrink:0!important}
+#cost-settings-panel .body{flex:1;min-height:0;overflow:auto!important;padding:10px!important;display:flex;flex-direction:column;gap:7px}
+#cost-settings-panel .parameter-close{background:none;color:white;border:0;font-size:23px;cursor:pointer}
+.cost-settings-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:9px;row-gap:2px;align-items:end}
+.cost-settings-grid label{font-size:10px!important;line-height:1.15;align-self:end;min-height:22px;margin:7px 0 2px!important}
+.cost-settings-grid input{height:31px!important;width:100%!important;border-radius:6px!important}
+.settings-actions{display:flex;gap:7px;position:sticky;bottom:-10px;background:#fff;padding:9px 0 6px;margin-top:auto}
+.settings-actions button{flex:1;padding:8px 6px;font-size:11px}
+@media(max-width:950px){#cost-settings-panel{position:fixed!important;inset:72px 8px 8px!important;max-width:410px!important;margin:auto!important;max-height:calc(100vh - 80px)!important}}
+
+.vehicle-svg{width:34px;height:22px;display:block;margin:0 auto 4px;}
+
+#p-resumen,#p-costos{display:flex;flex-direction:column;min-height:0}#p-resumen .body,#p-costos .body{min-height:0}#p-costos .body{display:flex;flex-direction:column;overflow:hidden}#costOutput{flex:1;overflow:auto;padding-right:2px}#summary{overflow:auto}#summary .metricgrid{gap:6px}#summary .metric{padding:8px;border-radius:8px}#summary .metric small{font-size:11px}#summary .metric b{font-size:18px;margin-top:2px}.costhero{padding:8px 10px;margin-bottom:8px}.costhero strong{font-size:28px}.costhero small{font-size:11px}.priceTable{font-size:11px}.priceTable td{padding:4px 3px}.report-actions{margin-top:8px}.report-actions .smallbtn{padding:9px 10px}#p-costos .hint{font-size:11px;line-height:1.25}
+
+.bottom-row .body{height:100%;overflow:auto;padding:0}.comparison-wrap{overflow:auto}#originQuoteResults{height:auto;overflow:visible}.comparison-table{font-size:11px} .comparison-table th,.comparison-table td{padding:5px 6px}
+
+.left-column{overflow:auto;scrollbar-width:thin}.left-column .panel .body{padding:9px 10px}.left-column .hint{font-size:11px}.alt-origins .site{padding:7px 8px;margin:4px 0}.alt-origins .site button{padding:6px 8px;font-size:11px}
+
+.parameter-panel .body{padding:10px}.cost-settings-grid{display:grid;grid-template-columns:1fr 110px;gap:8px 10px}.cost-settings-grid label{margin:0;align-self:center;font-size:12px}.cost-settings-grid input{padding:7px 8px}.settings-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+
+/* V20 controls */
+.operation-selector{margin-bottom:5px}.operation-selector label{margin-top:0!important}.operation-selector select{font-size:12px;font-weight:700;padding:7px 8px!important;border-color:#b4c9dd;background:#f4f8fe!important}
+.fullscreen-control{border:1px solid #d0dded;background:#fff;border-radius:8px;color:#0b3b60;font-weight:800;padding:7px 11px;cursor:pointer;white-space:nowrap;box-shadow:0 2px 9px #0002;font-size:12px}.fullscreen-control:hover{color:#0000b3;border-color:#0000b3}
+.map-column:fullscreen,.map-column.map-maximized{background:#dbeaf3;width:100vw!important;height:100vh!important;position:fixed!important;inset:0!important;z-index:99999!important;border-radius:0!important;grid-column:auto!important;grid-row:auto!important}
+.map-column:fullscreen #map,.map-column.map-maximized #map{height:100%!important;width:100%!important}
+@media(max-width:750px){.map-topbar{flex-wrap:wrap}.fullscreen-control{font-size:11px;padding:5px 7px}}
+
+/* V21: paneles permanentes y legibilidad */
+.right-column{grid-template-rows:minmax(250px,41%) minmax(0,1fr)!important;overflow:hidden!important}
+#p-resumen,#p-costos{min-height:0!important;display:flex;flex-direction:column}
+#p-resumen>.body,#p-costos>.body{min-height:0!important;overflow:auto!important;scrollbar-width:thin}
+#summary .metricgrid{gap:7px!important}
+#summary .metric{min-height:58px;padding:9px!important}
+#summary .metric small{font-size:12px!important;line-height:1.2!important}
+#summary .metric b{font-size:19px!important;line-height:1.15!important}
+.panel>h3{min-height:32px}
+.geocode-button{display:block;background:#f0f5ff;border:1px solid #c6d7f7;border-radius:7px;padding:6px 10px;margin:6px 0;font-size:11px;font-weight:700;color:#073b80;cursor:pointer;width:100%}
+.geo-results{max-height:155px;overflow:auto}.geo-hit{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid #e5edf5;background:#fff;padding:7px 5px;font-size:11px;color:#1b405d;cursor:pointer}.geo-hit:hover{background:#edf5ff}
+
+/* V22: both points are selectable without the abasto mode; compact five-row comparison */
+.operation-selector{display:none!important}
+#p-ruta .input-row{position:relative;display:block}
+#p-ruta .geocode-button{position:static!important;display:inline-block!important;width:100%!important;margin:4px 0 3px!important;padding:7px!important}
+#p-ruta .geo-results,#p-ruta .search-results{max-height:156px!important;overflow:auto!important;position:absolute!important;z-index:1800!important;left:8px!important;right:8px!important;background:#fff!important;box-shadow:0 6px 14px #092e5340!important;border-radius:7px!important}
+#p-ruta .geo-results:empty,#p-ruta .search-results[hidden]{display:none!important}
+.bottom-row{grid-row:2!important;min-height:204px!important}
+.app-shell{grid-template-rows:minmax(0,1fr) 210px!important}
+#originQuoteResults{height:100%!important;overflow:visible!important}
+.bottom-row .comparison-wrap{padding:4px 6px!important;overflow:hidden!important}
+.executive-table{width:100%;table-layout:fixed;font-size:11px!important;border-collapse:collapse}
+.executive-table th,.executive-table td{padding:4px 5px!important;line-height:1.2!important;white-space:normal!important}
+.executive-table th:first-child,.executive-table td:first-child{width:16%}
+.executive-table th:last-child,.executive-table td:last-child{width:9%}
+.comparison-meta{padding:3px 5px!important;font-size:11px!important;margin:0!important}
+.comparison-footnote{font-size:10px!important;margin-top:3px!important;line-height:1.1!important}
+@media(max-height:790px){.app-shell{grid-template-rows:minmax(0,1fr) 195px!important}.executive-table th,.executive-table td{padding:3px 4px!important}}
+
+
+/* V23: bottom comparison tuned to show principal + 4 alternatives */
+.bottom-row{grid-template-rows:auto 1fr}
+.bottom-row .body{padding:0!important;overflow:auto!important}
+.bottom-row .comparison-wrap{padding:0!important;overflow:auto!important;min-height:0}
+#originQuoteResults{height:100%!important;overflow:auto!important;display:flex;flex-direction:column}
+.comparison-meta{position:sticky;top:0;z-index:2;background:#f5f8fc;padding:4px 8px!important;font-size:10px!important;border-bottom:1px solid #dce6ef}
+.executive-table{width:100%;table-layout:fixed;font-size:10px!important;border-collapse:collapse}
+.executive-table thead th{position:sticky;top:28px;z-index:1;background:#eaf1f8}
+.executive-table th,.executive-table td{padding:3px 4px!important;line-height:1.12!important;white-space:normal!important;vertical-align:middle}
+.executive-table th:nth-child(1),.executive-table td:nth-child(1){width:18%}
+.executive-table th:nth-child(2),.executive-table td:nth-child(2){width:10%}
+.executive-table th:nth-child(3),.executive-table td:nth-child(3){width:9%}
+.executive-table th:nth-child(4),.executive-table td:nth-child(4){width:13%}
+.executive-table th:nth-child(5),.executive-table td:nth-child(5){width:12%}
+.executive-table th:nth-child(6),.executive-table td:nth-child(6){width:12%}
+.executive-table th:nth-child(7),.executive-table td:nth-child(7){width:9%}
+.executive-table th:nth-child(8),.executive-table td:nth-child(8){width:7%}
+.executive-table th:nth-child(9),.executive-table td:nth-child(9){width:10%}
+.origin-tag{display:inline-block;margin-left:4px;padding:1px 5px;border-radius:8px;font-size:9px;font-weight:700;background:#e8f0fb;color:#0e4fa5}
+.origin-tag.recommended{background:#e7f7ee;color:#1c7f4d}
+.route-action,.selected-route{display:inline-block;padding:4px 6px!important;font-size:10px!important;border-radius:8px;white-space:nowrap}
+.route-action{border:1px solid #cfdbe8;background:#fff;color:#14476a;font-weight:700}
+.selected-route{background:#edf2f8;color:#4b6681;font-weight:700}
+.comparison-footnote{padding:4px 8px!important;font-size:9px!important;line-height:1.2!important;background:#fff}
+@media(max-height:850px){
+  .app-shell{grid-template-rows:minmax(0,1fr) 205px!important}
+  .executive-table{font-size:9px!important}
+  .executive-table th,.executive-table td{padding:2px 3px!important}
+  .comparison-meta{font-size:9px!important}
+}
+
+/* GeoRisk effort readout */
+.geo-effort{margin:9px 0;border:1px solid #cfdeeb;border-radius:9px;overflow:hidden;background:#f9fbfe}.geo-effort summary{padding:9px 10px;font-weight:800;color:#0d3b61;cursor:pointer;background:#edf4fa}.geo-effort-body{padding:9px 10px;font-size:12px}.geo-effort-body p{margin:4px 0 9px;line-height:1.4}.geo-effort .priceTable td{font-size:11px}.geo-effort[open]{max-height:280px;overflow:auto}
+
+/* V25: controls for CAPUFE suggestions and state price overrides */
+.dynamic-costs{margin:7px 0;padding:9px;border:1px solid #d8e5f0;border-radius:10px;background:#f8fbff;min-width:0}.dynamic-costs>strong{display:block;margin-bottom:6px;color:#113c66}.dynamic-costs .input-row{align-items:end;margin-top:6px}.dynamic-costs .input-row .secondary{white-space:nowrap;font-size:11px}.toll-items{margin:7px 0;max-height:120px;overflow:auto}.toll-item{display:flex;gap:7px;justify-content:space-between;padding:5px 2px;border-bottom:1px solid #e0e8ef;align-items:center}.toll-item button{background:#fff;border:1px solid #d2e0ed;border-radius:6px;cursor:pointer;color:#b42332}.state-price-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:5px}.state-price-grid{max-height:190px;overflow:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}.state-price-grid label{font-size:10px!important;margin:0!important}.state-price-grid input{padding:5px!important}.dynamic-costs .hint{font-size:11px;line-height:1.25}
+
+.pricePctTable thead td{font-weight:800;color:#5d7388;background:#f4f8fc;border-bottom:1px solid #dce6ef;position:sticky;top:0}
+.pricePctTable td:nth-child(2), .pricePctTable td:nth-child(3){text-align:right}
+.pricePctTable td:nth-child(3){white-space:nowrap}
+.pricePctTable .totalrow td{font-weight:800;background:#edf4ff}
+
+.market-comparison{max-height:225px;overflow:auto;border:1px solid #d7e5f0;border-radius:9px;padding:8px;margin-top:7px}.market-comparison input{margin:4px 0!important;padding:6px!important}.market-comparison p{font-size:11px}.fuel-state-row{display:flex;justify-content:space-between;font-size:11px;border-bottom:1px solid #e5edf4;padding:4px}.right-column #p-costos .body{min-height:0}#fuelRouteBreakdown{max-height:150px;overflow:auto}
+
+/* Ajustes de interfaz: legibilidad, accesibilidad y jerarquía visual. */
+:root { color-scheme: light; }
+button, input, select { font-family: inherit; }
+button { transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease; }
+button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible { outline: 3px solid #2278b9; outline-offset: 2px; }
+button:disabled { cursor: not-allowed; opacity: .6; }
+.start-btn { border-radius: 10px; background: #005ba8; box-shadow: none; }
+.start-btn:hover { background: #004b8b; }
+.welcome-card { border-radius: 16px; box-shadow: 0 15px 35px rgba(4,25,47,.2); }
+@media (prefers-reduced-motion:reduce) { *, *::before, *::after { transition-duration: .01ms!important; animation-duration: .01ms!important; } }
+
+
+/* Ajuste de portada: la imagen inicia exactamente al terminar la barra superior */
+#welcome .welcome-bg,#welcome .welcome-overlay{top:0}
+#welcome{background:#0f2238}
+
+/* GeoRisk SC: clasificación logística visible sin panel desplegable */
+.geo-effort{margin:12px 0;padding:12px;border:1px solid #dae5ef;border-radius:12px;background:#fff}
+.geo-effort h4{margin:0 0 10px;color:#083c67;font-size:14px}
+.effort-head,.effort-entry{display:grid;grid-template-columns:minmax(0,1fr) 82px 78px;align-items:center;gap:6px;font-size:11px;padding:4px 0}
+.effort-head{font-size:10px;font-weight:700;color:#667b92;border-bottom:1px solid #dae5ef}.effort-entry b{text-align:right;color:#183b5a;font-size:11px}
+.effort-meter{height:4px;background:#e8eff7;border-radius:3px;overflow:hidden;margin-bottom:3px}.effort-meter i{display:block;height:100%;background:#2375c5;border-radius:3px}
+.effort-total{border-top:1px solid #ced9e5;margin-top:7px;font-weight:800}.geo-effort .hint{font-size:10px;line-height:1.35;margin:8px 0 0}
+
+.zt-sap-box{border:1px solid rgba(20,113,179,.28);border-radius:10px;padding:12px;margin:12px 0;background:rgba(35,120,190,.055)}.zt-sap-box strong{display:block;margin-bottom:6px}.zt-sap-box small{display:block;margin-top:7px;opacity:.7}.zt-sap-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.zt-sap-actions button{font-size:12px}.zt-sap-box .hint{font-size:12px;line-height:1.5}
+
+/* AUT parameter editor and comparison */
+.aut-parameter-grid{display:grid;gap:9px;margin:12px 0}.aut-config-row{display:grid;grid-template-columns:minmax(120px,1.5fr) repeat(3,minmax(82px,1fr));gap:9px;align-items:center;padding:8px;border:1px solid #d9e2ec;border-radius:8px}.aut-config-row span{font-weight:600;font-size:12px}.aut-config-row label{font-size:11px;display:flex;flex-direction:column;gap:3px}.aut-config-row input{width:100%;box-sizing:border-box}.aut-results{border:1px solid #bed6e9;border-radius:12px;padding:12px;margin-bottom:12px}.aut-results h4{margin:0 0 10px}@media(max-width:700px){.aut-config-row{grid-template-columns:1fr 1fr}.aut-config-row span{grid-column:1/-1}}
+
+/* Results remain in their original grid slots, hidden until a route is calculated */
+#p-resumen[hidden],#p-costos[hidden],#p-bodegas[hidden],#effort-editor-panel[hidden]{display:none!important}
+.effort-edit-row{display:grid;grid-template-columns:minmax(130px,1fr) 110px 22px;gap:8px;align-items:center;margin:6px 0;font-size:12px}.effort-edit-row input{width:100%;box-sizing:border-box}.effort-edit-row span:last-child{color:#667889}
+
+/* GeoCoast: el mapa aprovecha las columnas y filas reservadas para resultados vacíos. */
+.app-shell.map-only-mode{grid-template-columns:320px minmax(0,1fr)!important;grid-template-rows:minmax(0,1fr)!important}
+.app-shell.map-only-mode>.map-column{grid-column:2!important;grid-row:1!important;min-width:0!important;min-height:0!important}
+.app-shell.map-only-mode>.right-column,.app-shell.map-only-mode>.bottom-row{display:none!important}
+/* Cuando aparecen resultados, se restablece la cuadrícula y los paneles originales. */
+@media(max-width:1500px){.app-shell.map-only-mode{grid-template-columns:300px minmax(0,1fr)!important}}
+@media(max-width:1200px){.app-shell.map-only-mode{grid-template-columns:280px minmax(0,1fr)!important}}
+@media(max-width:950px) and (min-width:901px){.app-shell.map-only-mode{grid-template-columns:240px minmax(0,1fr)!important;overflow-x:hidden!important}}
+@media(max-width:900px){.app-shell.map-only-mode{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto minmax(440px,65vh)!important;height:auto!important}.app-shell.map-only-mode>.map-column{grid-column:1!important;grid-row:2!important;height:min(65vh,700px)!important}}
+
+/* V16 — ZT compacta y columna de trabajo accesible sin reducir zoom del navegador */
+#p-ruta .zt-sap-box.zt-sap-compact{padding:6px 8px!important;margin:5px 0!important;border-radius:7px!important}
+.zt-sap-head{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.zt-sap-head>strong{font-size:11px!important;margin:0!important;white-space:nowrap}
+.zt-sap-compact #ztSapResult{font-size:10px!important;line-height:1.25!important;margin:2px 0 0!important;overflow-wrap:anywhere}
+.zt-sap-details{position:relative;min-width:0;font-size:10px}
+.zt-sap-details>summary{list-style:none;cursor:pointer;border:1px solid #cbd8eb;background:#fff;border-radius:5px;padding:3px 7px;color:#123c67;font-weight:700}
+.zt-sap-details>summary::-webkit-details-marker{display:none}
+.zt-sap-details[open]{position:relative}
+.zt-sap-details .zt-sap-actions{display:flex;gap:4px;flex-direction:row;margin:6px 0 0;flex-wrap:wrap}
+.zt-sap-details .zt-sap-actions button{padding:5px 7px!important;font-size:10px!important;min-height:25px;border-radius:5px;flex:1}
+.zt-sap-details small{font-size:9px;line-height:1.2;margin-top:4px!important}
+@media (min-width:951px){
+.app-shell>.left-column{overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior:contain;scrollbar-width:thin}
+.app-shell>.left-column>#p-demanda-visual,.app-shell>.left-column>#p-ajustes{flex:0 0 auto!important;min-height:auto!important}
+.app-shell>.left-column>#p-ajustes>.body{display:block!important}
+}
+
+/* Trayecto cost scope */
+.cost-trip-selector{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px;margin:0 0 8px;padding:7px 8px;border:1px solid #dae6f3;border-radius:8px;background:#f8fbff;font-size:11px}
+.cost-trip-selector select{width:auto;max-width:100%;padding:5px 7px;font-size:11px}
+.trip-cost-comparison{border:1px solid #d6e4ef;padding:9px;border-radius:9px;margin-bottom:9px;background:#fcfdff}
+.trip-cost-comparison h4{margin:0 0 7px;color:#0d3b61}
+.trip-cost-comparison .metricgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.trip-cost-comparison .metric{min-width:0;padding:7px;background:#eff5fc;border-radius:7px}
+.trip-cost-comparison .metric small{display:block;font-size:10px}
+.trip-cost-comparison .metric b{display:block;font-size:17px}
+
+/* References Staff E.L inside cost breakdown */
+.staff-settings{border:1px solid #d2deeb;border-radius:8px;margin:6px 0 10px;padding:8px;background:#f7fafc;font-size:11px}
+.staff-settings summary{font-weight:700;color:#194268;cursor:pointer}
+.staff-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:8px 0}
+.staff-grid label{font-size:11px;display:flex;flex-direction:column;gap:3px}
+.staff-grid input{width:100%;min-width:0;padding:6px}
+.staff-check{display:flex;align-items:center;gap:6px;font-size:11px}
+.staff-check input{width:15px;height:15px;flex:none}
+.staff-cost-comparison{border:1px solid #d8e4f1;border-radius:8px;padding:9px;margin-top:10px}
+.staff-cost-comparison h4{margin:0 0 8px;font-size:13px}
+.staff-cost-comparison .priceTable{width:100%;font-size:10px}
+.staff-cost-comparison .metric b{font-size:12px}
+
+/* Demanda: total calculado, sin ampliar la barra lateral. */
+.movement-total{display:grid;grid-template-columns:1fr 90px;align-items:center;gap:6px;margin-top:2px}
+.movement-total label{margin:0;line-height:1.2}
+.movement-total input{width:100%;background:#edf5ff;font-weight:800;text-align:right}
+@media(max-width:420px){.movement-total{grid-template-columns:1fr 84px}}
+
+/* Diésel nacional GasMapa: tabla compacta y alcance explícito. */
+.diesel-panel{border:1px solid #bed6e9;border-radius:9px;padding:10px;background:#f7fbff}
+.diesel-panel>strong{font-size:13px;color:#0a3553}
+.fuel-primary{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px;margin:7px 0;border-radius:7px;background:#e7f1ff}
+.fuel-primary strong{font-size:18px;color:#0b4c94}
+.fuel-state-row{display:flex;justify-content:space-between;gap:8px;padding:4px 0;border-bottom:1px solid #d6e5f3;font-size:11px}
+.fuel-state-row strong{white-space:nowrap}
+.fuel-prices-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px}
+.fuel-prices-grid label{font-size:11px;margin:0;display:flex;flex-direction:column}
+.fuel-prices-grid input{width:100%;box-sizing:border-box}
+#stateFuelPrices details{border:1px solid #e1e8f1;border-radius:6px;padding:6px;margin:7px 0}
+#stateFuelPrices summary{cursor:pointer;font-size:12px;font-weight:700;color:#184c79}
+@media(max-width:700px){.fuel-prices-grid{grid-template-columns:1fr}}
+
+/* Servicios: drawer flotante sobre el mapa, no reduce espacios de otros cuadrantes. */
+.gc-service-panel{position:absolute;z-index:1000;top:64px;right:12px;width:min(390px,calc(100% - 24px));max-height:calc(100% - 80px);overflow-y:auto;background:rgba(255,255,255,.98);border:1px solid #bed2e9;border-radius:12px;box-shadow:0 12px 35px rgba(8,34,61,.21);padding:12px;box-sizing:border-box}
+.gc-service-panel[hidden]{display:none!important}
+.gc-service-head{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#0e3158}.gc-service-head strong{font-size:14px}.gc-service-head button{border:1px solid #ccd7e4;background:#fff;border-radius:7px;font-size:21px;line-height:24px;width:29px;height:29px;cursor:pointer}
+.gc-service-options{display:flex;flex-wrap:wrap;gap:12px;font-size:11px;margin:8px 0}.gc-service-options label{display:flex;align-items:center;gap:5px;cursor:pointer}.gc-service-options input{accent-color:#1546cc}
+.gc-service-summary{display:flex;flex-direction:column;gap:4px;background:#eef5ff;padding:8px;border-radius:8px;color:#143b63;font-size:12px}.gc-service-summary small{font-size:10px;color:#637a94}
+.gc-service-clusters{margin:8px 0;max-height:min(365px,42vh);overflow-y:auto}.gc-service-cluster{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 2px;border-bottom:1px solid #e3eaf4}.gc-service-cluster>div{display:flex;flex-direction:column;gap:3px}.gc-service-cluster b{font-size:11px;color:#183b60}.gc-service-cluster small{font-size:10px;color:#688199}.gc-service-cluster>strong{font-size:13px;white-space:nowrap;color:#0a60a8}.gc-service-cluster>strong small{display:block;text-align:right}
+.gc-fuel-cluster-pin{border:0;background:transparent}.gc-fuel-pin{display:flex;align-items:center;justify-content:center;gap:2px;background:#fff;border:2px solid #0068b8;border-radius:18px;height:28px;padding:0 5px;color:#004b87;box-shadow:0 3px 9px #0a274150;font-size:12px}.gc-fuel-pin b{font-size:11px}
+@media(max-width:900px){.gc-service-panel{top:52px;right:6px;width:min(350px,calc(100% - 12px));max-height:calc(100% - 58px)}}
+/* Catálogo CEMEX: direcciones verificadas sin crear pines ficticios. */
+.gc-cemex-catalog{position:absolute;z-index:1050;top:61px;right:12px;width:min(445px,calc(100% - 24px));max-height:calc(100% - 76px);overflow:auto;box-sizing:border-box;background:rgba(255,255,255,.99);border:1px solid #c6d6e7;border-radius:12px;padding:12px;box-shadow:0 14px 40px rgba(8,34,61,.25);color:#133b61}
+.gc-cemex-catalog[hidden],.gc-cemex-locate[hidden]{display:none!important}
+.gc-cemex-head{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}.gc-cemex-head strong{font-size:14px}.gc-cemex-head small{display:block;font-size:11px;color:#64809c;margin-top:4px}.gc-cemex-head button{font-size:21px;background:#fff;border:1px solid #cedae8;border-radius:7px;width:30px;height:30px}
+.gc-cemex-catalog>.hint{font-size:11px;line-height:1.45;margin:8px 0}.gc-cemex-catalog>input{width:100%;padding:10px;border:1px solid #cbd9e8;border-radius:8px;box-sizing:border-box;font:inherit;font-size:12px}
+.gc-cemex-filters{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:8px 0}.gc-cemex-filters select{width:100%;min-width:0;background:#f8fbff;border:1px solid #d3e0ef;border-radius:8px;padding:7px;font-size:11px}
+.gc-cemex-list{max-height:270px;overflow:auto;border:1px solid #e1e9f3;border-radius:8px}.gc-cemex-entry{padding:9px 7px;border-bottom:1px solid #e2ebf4}.gc-cemex-entry:last-child{border:0}.gc-cemex-entry-main{display:flex;flex-direction:column;gap:3px}.gc-cemex-entry-main strong{font-size:12px}.gc-cemex-entry-main small{font-size:10px;color:#5b7592;line-height:1.3}.gc-cemex-status{font-style:italic}
+.gc-cemex-entry-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:6px}.gc-cemex-entry-actions button{padding:5px 9px;background:#eef5ff;border:1px solid #c4d8f0;border-radius:7px;cursor:pointer;color:#124674;font-size:11px}.gc-cemex-entry-actions a{color:#0b60a7;font-size:11px;text-decoration:underline}
+.gc-cemex-locate{margin-top:10px;padding:10px;background:#f3f8ff;border:1px solid #c9deef;border-radius:9px}.gc-cemex-locate>strong{font-size:12px}.gc-cemex-locate label{font-size:11px;display:block;margin-top:8px}.gc-cemex-locate label input{width:100%;box-sizing:border-box;margin:4px 0;padding:7px;border:1px solid #c8d8e8;border-radius:6px;font-size:11px}.gc-cemex-locate>button{font-size:11px;padding:7px;border-radius:6px}.gc-cemex-results{display:flex;flex-direction:column;gap:6px;font-size:11px;padding:7px 0}.gc-cemex-geocode-choice{text-align:left;border:1px solid #bcd3e9;background:#fff;border-radius:7px;padding:7px;font-size:11px;line-height:1.4}.gc-cemex-success{font-size:11px;font-weight:600;color:#127150}.gc-cemex-coords{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}.gc-cemex-coords input{width:100px;min-width:60px;flex:1;padding:6px}.gc-cemex-coords button{font-size:10px;padding:6px}.gc-cemex-locate details{font-size:11px}
+@media(max-width:900px){.gc-cemex-catalog{right:6px;top:54px;width:min(395px,calc(100% - 12px));max-height:calc(100% - 64px)}}
+/* Gasolineras OSM - capa independiente del precio estatal GasMapa. */
+.gc-stations-area{margin:12px 0 5px;border-top:1px solid #d9e5f2;padding-top:10px}
+.gc-station-head{display:flex;flex-direction:column;gap:3px;color:#143857;font-size:12px}
+.gc-station-head small{font-weight:400;color:#627e99;font-size:10px}
+.gc-station-controls{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}
+.gc-station-controls label{font-size:10px;color:#325676;grid-column:1 / -1}
+.gc-station-controls select{display:block;width:100%;margin-top:3px;padding:7px;border:1px solid #ccdaec;background:#fff;border-radius:7px;color:#173e60}
+.gc-station-controls button{font-size:11px;border:1px solid #bcd0ea;background:#ecf4ff;color:#17446b;border-radius:8px;padding:8px 4px;cursor:pointer}
+.gc-station-controls button:disabled{opacity:.6}.gc-station-controls .gc-choosing{background:#064ddd;color:#fff}
+.gc-station-list{max-height:170px;overflow:auto;display:flex;flex-direction:column;gap:3px;margin:6px 0}
+.gc-station-entry{display:flex;justify-content:space-between;align-items:center;text-align:left;gap:8px;padding:7px;background:#fff;border:1px solid #deebf6;border-radius:7px;color:#12406e;cursor:pointer}
+.gc-station-entry strong{font-size:10px}.gc-station-entry small{display:block;font-size:10px;color:#72839b;margin-top:3px}
+.gc-station-entry>span:last-child{white-space:nowrap;font-size:10px}
+.gc-station-icon{background:transparent!important;border:0!important}
+.gc-station-marker{width:25px;height:25px;display:flex;justify-content:center;align-items:center;border:2px solid white;border-radius:50%;background:#126d9b;color:#fff;box-shadow:0 2px 7px #243b5270;font-size:14px}
+
+.gc-service-state-title{margin-top:10px;font-size:11px;font-weight:700;color:#25496d}
+.gc-service-clusters{max-height:min(250px,28vh)}
+
+/* Cálculo integral y selección del tipo de transportista. */
+.gc-integral-tag{margin:5px 0 12px;border:1px solid #bdd4ed;border-radius:9px;padding:10px;background:#edf5ff;color:#13395e;font-size:12px}
+.gc-carrier-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}
+.gc-carrier-grid label{font-size:11px}.gc-carrier-grid input{display:block;width:100%;box-sizing:border-box;margin-top:4px}
+.gc-national-controls{grid-template-columns:1fr 1fr}
+.gc-national-controls button{min-height:33px}
+.gc-station-icon{background:transparent!important;border:0!important}
+.gc-station-marker{width:24px;height:24px;border:2px solid white;border-radius:50%;background:#146d98;display:grid;place-items:center;color:white;box-shadow:0 2px 8px #21405a60}
+
+/* Portada corporativa y créditos solicitados. Controles reales HTML, no incrustados en imagen. */
+.app-header{box-shadow:0 1px 3px rgba(11,35,65,.06)}
+.gc-exit{background:#062b55!important;color:white!important;border-color:#062b55!important;white-space:nowrap}
+.gc-exit:hover{background:#08528d!important}
+#welcome{isolation:isolate}
+#welcome .welcome-bg{background-position:center center}
+#welcome .welcome-overlay{background:linear-gradient(90deg,rgba(5,24,45,.18) 0%,rgba(5,24,45,.1) 45%,rgba(7,25,48,.28) 100%),linear-gradient(0deg,rgba(3,25,49,.86),transparent 32%)}
+#welcome .welcome-card{left:auto;right:5%;top:46%;transform:translateY(-50%);width:min(560px,43vw);padding:28px 30px;background:rgba(255,255,255,.94);box-shadow:0 20px 55px rgba(4,18,41,.26);border:1px solid rgba(255,255,255,.7);backdrop-filter:blur(8px);border-radius:16px}
+#welcome .welcome-card h1{font-size:clamp(45px,5vw,67px)}
+#welcome .welcome-card h2{font-size:27px}
+#welcome .welcome-card h3{font-size:21px}
+#welcome .welcome-card p{font-size:15px}
+#welcome .start-btn{display:flex;align-items:center;justify-content:center;gap:40px;min-width:255px;background:linear-gradient(100deg,#0058b8,#009ab4);border-radius:10px}
+.welcome-feature-strip{position:absolute;z-index:2;left:4%;bottom:5.5%;display:flex;max-width:68%;flex-wrap:wrap;gap:18px;color:#fff;font-size:12px}
+.welcome-feature-strip span{display:flex;gap:8px;align-items:center;padding-right:17px;border-right:1px solid #ffffff55;letter-spacing:.1px}
+.welcome-feature-strip b{font-size:12px;font-weight:700}
+.welcome-credit{position:absolute;right:3%;bottom:3.2%;color:white;font-size:12px;text-shadow:0 2px 6px #082238;letter-spacing:.1px}
+.final-actions #draw{width:100%;flex:1}
+@media(max-width:1000px){#welcome .welcome-card{width:min(560px,89vw);left:50%;right:auto;top:41%;transform:translate(-50%,-50%)}.welcome-feature-strip{max-width:95%;bottom:8%}.welcome-credit{right:3%;bottom:2%}}
+@media(max-width:650px){#welcome .welcome-card{top:40%;padding:22px 20px}#welcome .welcome-card h1{font-size:48px}.welcome-feature-strip{bottom:8%;font-size:11px;gap:8px}.welcome-feature-strip span{padding-right:7px}}
+
+.gc-station-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px 0}
+.gc-station-fields label{display:block;font-size:11px;font-weight:700;color:#1c4566}
+.gc-station-fields input,.gc-station-fields select{width:100%;margin-top:4px;padding:7px 6px!important;font-size:11px}
+.gc-station-stats{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:#084675}.gc-station-stats strong{font-size:13px}
+.gc-station-marker{display:flex;align-items:center;justify-content:center;width:27px;height:27px;background:white;border:2px solid #0871b6;border-radius:15px;box-shadow:0 2px 8px #132b3766;font-size:14px}
+.gc-station-icon{background:transparent;border:none}
+/* El camión queda a la izquierda y el panel a la derecha, como en la portada aprobada.
+   La fotografía original no se rasteriza con textos ni botones. */
+#welcome .welcome-bg{transform:scaleX(-1)}
+
+
+/* === Portada refinada V2: composición más limpia y profesional === */
+.app-header{position:relative;z-index:1200;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid #dbe6f0}
+#welcome{background:#0a1f33;min-height:calc(100vh - var(--header-h,72px))}
+#welcome .welcome-bg{background-position:center center;transform:scaleX(-1);filter:saturate(1.02) contrast(1.03) brightness(.92)}
+#welcome::before{content:"";position:absolute;left:0;top:0;bottom:0;width:32%;background:linear-gradient(180deg,rgba(0,128,255,.22),rgba(0,128,255,0));clip-path:polygon(0 0,63% 0,100% 100%,0 100%);z-index:1;pointer-events:none}
+#welcome::after{content:"";position:absolute;right:0;top:0;bottom:0;width:16%;background:linear-gradient(180deg,rgba(0,196,255,.18),rgba(0,196,255,0));clip-path:polygon(28% 0,100% 0,100% 100%,0 100%);z-index:1;pointer-events:none}
+#welcome .welcome-overlay{background:linear-gradient(90deg,rgba(4,25,48,.50) 0%,rgba(4,25,48,.18) 35%,rgba(4,25,48,.18) 65%,rgba(4,25,48,.44) 100%),linear-gradient(0deg,rgba(4,18,34,.88) 0%,rgba(4,18,34,0) 28%)}
+#welcome .welcome-card{right:5.2%;top:50%;transform:translateY(-50%);width:min(600px,42vw);padding:34px 36px;background:rgba(255,255,255,.95);border:1px solid rgba(255,255,255,.82);box-shadow:0 20px 60px rgba(7,24,43,.30);border-radius:20px;backdrop-filter:blur(8px)}
+#welcome .welcome-card .eyebrow{color:#667f98;font-size:12px;letter-spacing:3px;text-transform:uppercase}
+#welcome .welcome-card h1{margin:10px 0 0;font-size:clamp(54px,5.2vw,78px);line-height:.95;letter-spacing:-2.2px;color:#09355f}
+#welcome .welcome-card h2{margin:6px 0 18px;font-size:clamp(28px,2.2vw,38px);color:#114b79}
+#welcome .welcome-card h3{position:relative;margin:0 0 18px;padding-bottom:14px;font-size:clamp(24px,1.9vw,30px);color:#162a66}
+#welcome .welcome-card h3::after{content:"";position:absolute;left:0;bottom:0;width:72px;height:4px;background:linear-gradient(90deg,#00bad7,#21d7e5);border-radius:99px}
+#welcome .welcome-card p{margin:0;color:#4b637a;font-size:15px;line-height:1.55;max-width:28ch}
+#welcome .start-btn{margin-top:22px;display:inline-flex;align-items:center;justify-content:space-between;gap:34px;min-width:290px;padding:18px 28px;background:linear-gradient(90deg,#0059bf,#00a8cb);border-radius:14px;font-size:20px;font-weight:800;box-shadow:0 10px 26px rgba(0,95,190,.25)}
+#welcome .start-btn:hover{background:linear-gradient(90deg,#004ea8,#0195b5)}
+.welcome-feature-strip{left:3.8%;right:3.8%;bottom:4.2%;max-width:none;display:flex;justify-content:flex-start;align-items:center;gap:0;padding:15px 20px;background:linear-gradient(90deg,rgba(7,24,43,.58),rgba(7,24,43,.32));border:1px solid rgba(255,255,255,.10);border-radius:18px;backdrop-filter:blur(7px);box-shadow:0 14px 36px rgba(6,23,42,.22)}
+.welcome-feature-strip span{flex:1;min-width:140px;padding:0 16px;border-right:1px solid rgba(255,255,255,.17);font-size:12px}
+.welcome-feature-strip span:last-child{border-right:0}
+.welcome-feature-strip b{display:block;font-size:13px;color:#fff;font-weight:800}
+.welcome-credit{right:3.4%;bottom:2.1%;font-size:13px;font-weight:600;color:#fff;text-shadow:0 2px 7px rgba(4,20,37,.75)}
+@media(max-width:1250px){
+  #welcome .welcome-card{width:min(560px,46vw);right:4%}
+  .welcome-feature-strip span{min-width:120px;padding:0 12px}
+}
+@media(max-width:1000px){
+  #welcome::before,#welcome::after{display:none}
+  #welcome .welcome-card{left:50%;right:auto;top:42%;transform:translate(-50%,-50%);width:min(620px,90vw);padding:28px 24px}
+  #welcome .welcome-card p{max-width:none}
+  .welcome-feature-strip{left:16px;right:16px;bottom:62px;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px}
+  .welcome-feature-strip span{border-right:0;padding:0}
+  .welcome-credit{left:16px;right:16px;text-align:right;bottom:20px}
+}
+@media(max-width:650px){
+  #welcome .welcome-card{top:40%;padding:24px 18px;border-radius:18px}
+  #welcome .welcome-card h1{font-size:52px}
+  #welcome .welcome-card h2{font-size:28px}
+  #welcome .welcome-card h3{font-size:22px}
+  #welcome .start-btn{width:100%;min-width:0}
+  .welcome-feature-strip{grid-template-columns:1fr;bottom:72px}
+  .welcome-credit{text-align:left}
+}
+
+/* Modelo IMT: formulario compacto, encabezado explícito y desgloses plegables. */
+.imt-config{border:1px solid #8baecd!important;background:linear-gradient(150deg,#eef6ff,#fff)!important}
+.imt-base-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:10px 0}
+.imt-base-grid label{font-size:11px;color:#1b5276;font-weight:750}.imt-base-grid input{width:100%;box-sizing:border-box;margin-top:4px}
+.imt-config-details{border:1px solid #d7e6f2;background:white;border-radius:9px;margin-top:9px;padding:10px}
+.imt-config-details>summary{font-weight:800;font-size:12px;color:#09365f;cursor:pointer}
+.imt-param-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:10px 0}
+.imt-field{display:flex;flex-direction:column;font-size:11px;color:#1c4767;gap:5px;padding:5px;background:#f5f9ff;border:1px solid #e2edf6;border-radius:7px;min-width:0}
+.imt-field span{line-height:1.3}.imt-field small{color:#7089a2}.imt-field input{width:100%;box-sizing:border-box;background:white;margin:0}
+.imt-output .costhero{border-left-color:#0063b1;background:#eef6ff}.imt-expander{border:1px solid #dce7f3;border-radius:9px;margin:8px 0;padding:8px;background:#fff;color:#23425d}
+.imt-expander summary{cursor:pointer;color:#123d69;font-size:12px;font-weight:750}.imt-expander p{font-size:11px;line-height:1.5;margin:7px 0}.imt-output .metricgrid{gap:6px}
+@media(max-width:600px){.imt-param-grid,.imt-base-grid{grid-template-columns:1fr}}
+
+
+/* FIX 2026-10-21: portada aprobada + navegación sin regreso espontáneo */
+body.gc-entered #welcome{display:none!important;visibility:hidden!important;pointer-events:none!important}
+body.gc-entered #app{display:grid!important}
+body:not(.gc-entered) #app{display:none!important}
+#welcome[hidden]{display:none!important}
+#welcome .welcome-bg{background-image:url('assets/portada-cinematica-2026.jpg')!important;transform:none!important;filter:saturate(1.09) contrast(1.04)!important;background-position:center 54%!important;background-size:cover!important}
+#welcome .welcome-overlay{background:linear-gradient(90deg,rgba(0,18,38,.07) 0%,rgba(0,18,38,.02) 48%,rgba(0,22,42,.04) 95%),linear-gradient(0deg,rgba(1,20,39,.92) 0%,transparent 30%)!important}
+#welcome .welcome-card{right:7.4%;top:47%;width:min(560px,42vw);padding:31px 34px;box-shadow:0 22px 60px rgba(2,19,37,.34)!important}
+#welcome .welcome-card p{max-width:initial}
+#welcome .welcome-feature-strip{bottom:5%;left:4%;right:4%;width:auto;max-width:92%;padding:14px 17px 14px 10px;gap:0;background:linear-gradient(90deg,rgba(3,28,51,.65),rgba(3,28,51,.15))!important;box-shadow:none;backdrop-filter:blur(4px)}
+#welcome .welcome-feature-strip span{min-width:0;display:flex;align-items:center;gap:12px;font-weight:700;line-height:1.25;padding:4px 18px}
+#welcome .welcome-feature-strip svg{flex-shrink:0;width:30px;height:30px;stroke:#2ddff9;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none}
+#welcome .welcome-feature-strip b{font-size:12px;white-space:nowrap}
+#welcome .welcome-credit{right:4%;bottom:1.4%;font-size:12px}
+@media(max-width:1140px){#welcome .welcome-card{right:3%;width:min(500px,46vw)}#welcome .welcome-feature-strip span{padding:3px 8px;gap:5px}#welcome .welcome-feature-strip svg{width:24px;height:24px}}
+@media(max-width:860px){#welcome .welcome-card{left:50%;right:auto;top:40%;transform:translate(-50%,-50%);width:min(610px,88vw)}#welcome .welcome-feature-strip{left:12px;right:12px;bottom:55px;display:flex;flex-wrap:wrap;gap:7px;max-width:none}#welcome .welcome-feature-strip span{flex:1 1 145px}#welcome .welcome-credit{bottom:14px;right:12px}}
+
+/* 2026-10-21 · Cotizador IMT depurado y sin scroll horizontal */
+#cost-settings-panel,#cost-settings-panel .body,#gcCleanSettings,#gcCleanSettings *{box-sizing:border-box}
+#cost-settings-panel .body{overflow-x:hidden!important;overflow-y:auto!important;scrollbar-gutter:stable;overscroll-behavior:contain;min-width:0;padding:12px!important}
+#cost-settings-panel .settings-actions{position:sticky;bottom:0;z-index:3;background:linear-gradient(#ffffffee,#fff);padding:10px 5px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:0}
+#cost-settings-panel .settings-actions button{min-width:0;min-height:38px;padding:7px;font-size:12px}
+.gc-clean-settings{width:100%;min-width:0;display:flex;flex-direction:column;gap:10px}
+.gc-clean-settings .gc-setting-intro{padding:11px;border-radius:10px;color:#14476c;background:#edf5ff;border:1px solid #c8dff1;display:grid;gap:5px}
+.gc-setting-intro strong{font-size:13px}.gc-setting-intro small{font-size:10px;line-height:1.5}
+.gc-setting-section{display:block;background:#fff;border:1px solid #d5e4f1;border-radius:12px;padding:11px;min-width:0;margin:0}
+.gc-setting-section h4{font-size:12px;color:#114269;margin:0 0 9px}
+.gc-setting-section>summary{font-size:12px;font-weight:800;color:#104069;cursor:pointer;line-height:1.4}
+.gc-setting-section[open]>summary{margin-bottom:9px}
+.gc-setting-grid,.gc-clean-settings .imt-base-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.gc-setting-field{min-width:0;display:flex;flex-direction:column;gap:5px}
+.gc-setting-field label,.gc-setting-grid label{font-size:11px!important;color:#214662;line-height:1.35}
+.gc-setting-field input,.gc-setting-grid input{display:block;width:100%!important;min-width:0;max-width:100%;height:36px!important;padding:7px 9px!important;border:1px solid #cbdbea;border-radius:8px;color:#153b5b;background:#fff}
+.gc-wide{grid-column:1/-1}.gc-setting-hint{font-size:10px!important;line-height:1.5;color:#687f93;margin:5px 0 9px}
+.gc-pill{display:inline-block;border:1px solid #d0e1ee;padding:3px 5px;border-radius:6px;font-size:11px;background:#f2f8ff;color:#0b569a;float:right}
+.gc-clean-settings .diesel-panel{padding:8px;border:0;max-width:100%;overflow:hidden;background:transparent}
+.gc-clean-settings .diesel-panel .fuel-primary{align-items:center}.gc-clean-settings .diesel-panel .fuel-primary strong{white-space:nowrap}
+.gc-clean-settings .diesel-panel .checkline{display:flex;align-items:center;gap:8px;min-width:0;min-height:35px;margin:5px 0;font-size:10px!important;line-height:1.3}
+.gc-clean-settings input[type=checkbox]{appearance:auto!important;min-width:15px!important;width:16px!important;height:16px!important;flex-shrink:0!important;accent-color:#084b91}
+.gc-clean-settings .diesel-panel .input-row{display:flex;gap:5px;flex-wrap:wrap}.gc-clean-settings .diesel-panel .input-row button{flex:1;min-width:100px;white-space:normal}
+.gc-clean-settings select,.gc-clean-settings input{max-width:100%;min-width:0}
+.gc-clean-settings .dynamic-costs{min-width:0}.gc-clean-settings .imt-config{background:linear-gradient(155deg,#eff7ff,#fff);border:1px solid #cbdff0;border-radius:12px;padding:10px}
+.gc-clean-settings #imtSettings>h4{font-size:12px;margin:0 0 7px;color:#0d466f}
+.gc-clean-settings #imtSettings .imt-base-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.gc-clean-settings #imtSettings .imt-base-grid label{min-width:0}.gc-clean-settings #imtSettings .imt-base-grid label.gc-wide{grid-column:1/-1}
+.gc-clean-settings #imtSettings .imt-base-grid select,.gc-clean-settings #imtSettings .imt-base-grid input{width:100%;height:34px;padding:6px;border:1px solid #cbddea;border-radius:7px}
+.gc-clean-settings #imtSettings .imt-base-grid .gc-wide input{width:100%}
+.gc-clean-settings .imt-param-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px}
+.gc-clean-settings .imt-field{min-width:0}.gc-clean-settings .imt-field span{overflow-wrap:anywhere}
+.gc-clean-settings .imt-field input{min-width:0}
+.gc-profile-summary{border-radius:9px;padding:10px;background:#eaf4ff;border:1px solid #cadff4;color:#1d5076;display:flex;flex-direction:column;gap:5px;font-size:12px}
+.gc-profile-summary small{font-size:10px;line-height:1.4}
+.gc-nested{margin-top:9px}.gc-nested>summary{font-size:11px;color:#0d538c;cursor:pointer;font-weight:800}
+.gc-carrier-profiles{display:grid;gap:7px;margin-top:8px}.gc-fleet-editor{border:1px solid #e2ebf4;border-radius:9px;padding:8px}.gc-fleet-editor strong{font-size:11px}.gc-fleet-editor small{color:#8193a2;font-weight:400}
+.gc-fleet-rows{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.gc-fleet-rows label{font-size:10px;line-height:1.4;min-width:0}.gc-fleet-rows input{margin:5px 0;width:100%;height:32px;border:1px solid #cad9e8;border-radius:6px;padding:6px;font-size:11px}
+.gc-tier-inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.gc-tier-inputs label{min-width:0;font-size:11px;color:#173c5d}.gc-tier-inputs label small{display:block;font-size:9px;color:#7790a6}.gc-tier-inputs input{width:100%;min-width:0;border-radius:7px;border:1px solid #cadce8;padding:8px;background:#fff}
+.gc-tier-inputs input[readonly]{background:#edf5ff;color:#0b4e8e;font-weight:700}
+.gc-reference-hero{border:1px solid #cbdeec;border-radius:11px;padding:12px;background:#f2f8ff;display:flex;flex-direction:column;gap:4px}
+.gc-reference-hero small{font-size:11px;color:#607990}.gc-reference-hero strong{font-size:25px;color:#0b365e}.gc-reference-hero span{font-size:13px;color:#17456c}.gc-reference-hero span b{font-size:18px;color:#005cab}
+.gc-ref-table{table-layout:fixed;width:100%;font-size:10px}.gc-ref-table thead{font-weight:800}.gc-ref-table td{white-space:normal!important;overflow-wrap:anywhere;padding:5px 2px}.gc-ref-table .gc-reference-base{background:#eaf4fe}
+.gc-market-note{padding:8px;background:#f1f9f5;border:1px solid #cfe8d6;border-radius:8px}
+.gc-clean-settings #gcTollsPlace>.dynamic-costs{max-width:100%;overflow:hidden}.gc-clean-settings #gcTollsPlace .input-row{display:flex;gap:6px;min-width:0;flex-wrap:wrap}
+.gc-clean-settings #gcTollsPlace .input-row label{min-width:0;flex:1}.gc-clean-settings #gcTollsPlace .input-row select{width:100%;max-width:100%}
+.gc-clean-settings #gcTollsPlace .input-row button{max-width:100%;flex:0 0 auto}
+#gcLegacyControls[hidden]{display:none!important}
+@media(max-width:380px){.gc-setting-grid,.gc-clean-settings #imtSettings .imt-base-grid,.gc-clean-settings .imt-param-grid{grid-template-columns:1fr!important}.gc-tier-inputs{grid-template-columns:repeat(2,minmax(0,1fr))}.gc-fleet-rows{grid-template-columns:1fr 1fr}}
+
+/* Modo mapa: Bodegas solo enciende o apaga pines CEMEX, sin catálogo lateral */
+#cemexCatalogPanel{display:none!important}
+.gc-audit-control{margin:16px 0 8px;padding:14px;border:1px solid #b7cce0;background:#f0f6fc;border-radius:11px;color:#123e61}
+.gc-audit-control strong{font-size:13px}.gc-audit-control p{font-size:11px;color:#506c83;line-height:1.5}
+.gc-audit-control button{width:100%;margin:7px 0;padding:11px 12px;border-radius:8px;background:#103e69;color:white;border:0;cursor:pointer;font-size:13px;font-weight:700}
+.gc-audit-control small{font-size:10px;display:block;color:#687f93;line-height:1.5}
+.gc-audit-modal[hidden]{display:none!important}
+.gc-audit-modal{position:fixed;inset:0;z-index:3100;background:#f1f5f9;overflow:auto}
+.gc-audit-toolbar{position:sticky;top:0;z-index:3102;display:flex;justify-content:space-between;gap:12px;align-items:center;background:#0c385d;padding:13px 22px;color:white;box-shadow:0 4px 12px #10283e33}
+.gc-audit-toolbar>div{display:flex;gap:8px}.gc-audit-toolbar button{border:1px solid #d9e3eb;border-radius:7px;background:white;color:#0c385d;font-size:12px;padding:9px 12px;cursor:pointer}
+.gc-audit-document{max-width:900px;margin:22px auto 50px;padding:36px 43px 55px;box-sizing:border-box;background:white;border-radius:9px;box-shadow:0 8px 26px #12365024;color:#172c41;font-size:12px;line-height:1.55}
+.gc-audit-document h1{font-size:28px;color:#0a385c;margin:0 0 6px}.gc-audit-document h2{font-size:17px;color:#0b4d78;margin:22px 0 8px;padding-bottom:5px;border-bottom:2px solid #c6dce8}.gc-audit-document h3{font-size:14px;margin:14px 0 5px;color:#24486b}
+.gc-audit-document p{margin:6px 0}.gc-audit-document table{width:100%;border-collapse:collapse;font-size:11px;margin:9px 0 12px}
+.gc-audit-document th{background:#edf4f9;color:#0e3657;text-align:left}.gc-audit-document td,.gc-audit-document th{padding:6px 8px;border-bottom:1px solid #dce6ef;vertical-align:top}
+.gc-audit-document td:last-child,.gc-audit-document th:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.gc-audit-equation{padding:10px 13px;border-left:4px solid #008eae;background:#f0f7fb;margin:9px 0;font-size:12px;word-break:break-word}
+.gc-audit-subdued{font-size:11px;color:#61778b}.gc-audit-warning{margin:12px 0;padding:10px 13px;background:#fff5e7;border:1px solid #f3d8aa;border-radius:7px}
+@media(max-width:680px){.gc-audit-document{margin:0;padding:22px 14px}.gc-audit-toolbar{flex-direction:column;align-items:stretch}.gc-audit-toolbar>div{justify-content:space-between}}
+@media print{
+  body.gc-audit-print>*:not(#gcAuditModal){display:none!important}
+  body.gc-audit-print #gcAuditModal{display:block!important;position:static!important;background:#fff!important;overflow:visible!important}
+  body.gc-audit-print .gc-audit-toolbar{display:none!important}
+  body.gc-audit-print .gc-audit-document{box-shadow:none!important;max-width:none!important;margin:0!important;padding:0!important;color:#000!important}
+  .gc-audit-document h2,.gc-audit-document h3,.gc-audit-document tr,.gc-audit-equation{break-inside:avoid}
+  @page{size:A4;margin:16mm}
+}
+/* La hoja global imprime el reporte comercial en horizontal; prioridad explícita
+   para la memoria técnica en vertical, sin recortar páginas. */
+@media print {
+ html:has(body.gc-audit-print),body.gc-audit-print{height:auto!important;min-height:0!important;overflow:visible!important}
+ body.gc-audit-print>#gcAuditModal{display:block!important;position:static!important;inset:auto!important;max-height:none!important;height:auto!important;overflow:visible!important}
+ body.gc-audit-print>.exec-modal{display:none!important}
+ body.gc-audit-print #gcAuditBody{display:block!important;height:auto!important;max-height:none!important;overflow:visible!important}
+ @page {size:A4 portrait;margin:16mm}
+}
+
+/* Edición de esfuerzos en el mismo desglose del resultado */
+.gc-effort-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.gc-effort-heading h4{margin:0}.gc-effort-heading button{font-size:11px;padding:7px 10px}
+.gc-effort-grid-head,.gc-effort-inputrow{display:grid;grid-template-columns:minmax(0,1fr) minmax(54px,72px) 20px 62px;gap:5px;align-items:center}.gc-effort-grid-head{font-size:10px;color:#647d95;font-weight:750;margin-top:10px;padding-bottom:5px;border-bottom:1px solid #e0e8f2}.gc-effort-inputrow{font-size:11px;padding:7px 0 4px}.gc-effort-inputrow input{width:100%;min-width:0;box-sizing:border-box;text-align:right;padding:6px 3px;border:1px solid #bcd0e5;border-radius:6px;background:#fff;color:#123d64;font-size:11px}.gc-effort-inputrow strong{text-align:right;font-size:11px;color:#113d69}.gc-effort-inputrow b{font-weight:500;color:#73889d}.gc-effort-pending{font-size:11px;display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px solid #ebeff6}
+/* Desglose completo y porcentajes sobre la tarifa */
+.gc-cost-kpis{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:7px 0 9px;font-size:11px;color:#173c61}
+.gc-cost-table{border-collapse:collapse;width:100%;font-size:11px;table-layout:auto}.gc-cost-table th,.gc-cost-table td{padding:6px;border-bottom:1px solid #e1e9f1;text-align:right;white-space:normal}.gc-cost-table td:first-child,.gc-cost-table th:first-child{text-align:left}.gc-cost-table th{background:#ecf4fb;color:#214766}.gc-cost-table th:last-child,.gc-cost-table td:last-child{min-width:50px}.gc-cost-group{font-weight:800;background:#edf4fb}.gc-cost-subtotal{font-weight:800;background:#f4f8fc}.gc-cost-total{font-weight:850;background:#deedff;color:#07385f}.gc-rubro-note{display:block;color:#8093a7;font-size:9px;font-weight:400}.gc-cost-table-executive th:nth-child(3),.gc-cost-table-executive th:nth-child(4),.gc-cost-table-executive th:nth-child(5),.gc-cost-table-executive th:nth-child(6),.gc-cost-table-executive td:nth-child(3),.gc-cost-table-executive td:nth-child(4),.gc-cost-table-executive td:nth-child(5),.gc-cost-table-executive td:nth-child(6){text-align:right}.gc-cost-chip{display:inline-block;padding:3px 8px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.2px}.gc-chip-fixed{background:#e8efff;color:#104d99}.gc-chip-variable{background:#e6f6ee;color:#176a43}
+#gcManualCostFields label{min-width:0}#gcManualCostFields input{box-sizing:border-box;width:100%;min-width:0}
+
+/* GeoRisk como fuente, ajuste por ruta auditable */
+.gc-effort-mode{border:1px solid #c3dcf0;background:#eef7ff;border-radius:9px;padding:10px 11px;font-size:12px;color:#12395d;line-height:1.45}
+.gc-effort-editor-head,.gc-effort-editor-line{display:grid;grid-template-columns:minmax(135px,1.6fr) minmax(70px,.7fr) minmax(85px,.85fr) 64px;gap:7px;align-items:center;min-width:0;padding:7px 5px}
+.gc-effort-editor-head{font-size:10px;font-weight:800;color:#496a88;background:#f0f5fb;border-bottom:1px solid #dae6f1}
+.gc-effort-editor-line{font-size:11px;border-bottom:1px solid #e2eaf2;color:#214667}
+.gc-effort-editor-line>span>small{font-size:9px;font-weight:700;color:#ac600e;display:block}
+.gc-effort-editor-line>output{text-align:right;font-variant-numeric:tabular-nums}
+.gc-effort-editor-line>input{min-width:0;width:100%;box-sizing:border-box;padding:5px 4px!important;text-align:right;font-size:11px!important}
+.gc-effort-editor-line.gc-effort-changed{background:#fff9ee}
+.gc-effort-actions{display:flex;flex-wrap:wrap;align-items:end;gap:8px}
+.gc-effort-actions label{flex:1;min-width:170px;font-size:10px}
+.gc-effort-actions button{flex:0 1 auto;white-space:normal}
+@media(max-width:540px){.gc-effort-editor-head,.gc-effort-editor-line{grid-template-columns:minmax(100px,1.5fr) 54px 72px 48px;gap:3px;font-size:10px}}
+/* GC-FIS 2.0: controles de campo editables; estilo sobrio interno CEMEX. */
+.gc-physics-panel{background:#f7fafd;border:1px solid #d5e3ed;border-radius:5px;margin:12px 0;padding:12px;color:#183f5f}
+.gc-physics-panel>strong{font-size:13px}.gc-physics-panel .hint{font-size:11px}.gc-physical-rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px;margin:9px 0}
+.gc-physical-rows label{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:11px}.gc-physical-rows input{max-width:84px;background:white;border:1px solid #b6ccdf;border-radius:4px;padding:5px}
+#gcPhysicsStatus{font-size:11px;color:#315979}
+.gc-report-map{height:280px;position:relative;background:#f5f7f9;border:1px solid #ccd9e6;margin-top:12px;page-break-inside:avoid}
+.gc-report-map .leaflet-container{background:#f1f5f9}
+.gc-report-map-caption{font-size:10px;color:#49657a;padding:5px 0}
+.gc-report-method{padding:9px 12px;border-left:3px solid #063b6e;background:#f1f5fb;font-size:11px;margin:10px 0}
+.exec-page .exec-summary{grid-template-columns:repeat(4,minmax(0,1fr))}
+.exec-page .exec-head h1{font-size:24px;letter-spacing:-.3px}
+.exec-page .exec-head h2{font-size:13px}
+.exec-page .gc-report-map .leaflet-control-attribution{font-size:7px!important}
+@media print{.gc-report-map{height:230px!important;overflow:hidden!important}.exec-page .exec-summary>div{background:#fff!important;border:1px solid #ccd5dd}.exec-page h3{background:#eff4f9!important;color:#092f52!important;border-bottom:2px solid #092f52!important;print-color-adjust:exact}.exec-page table{white-space:normal}.exec-page tr{break-inside:avoid}}
+
+/* V3 - Priorizar datos de ruta frente al antiguo editor de esfuerzos */
+.gc-physical-summary{margin:9px 0 12px;border-top:1px solid #d9e4ed;padding:8px 2px}
+.gc-physical-summary h4{font-size:12px;margin:0 0 7px;color:#0b3554;font-weight:800}
+.gc-road-line{display:flex;justify-content:space-between;gap:8px;font-size:11px;padding:4px 0;border-bottom:1px solid #edf2f5}
+.gc-road-line strong{font-variant-numeric:tabular-nums;color:#153858;white-space:nowrap}
+.origin-current{background:#eef6fa}.unavailable-route{color:#8a4242}.comparison-meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:6px 4px;font-size:12px;color:#153858}
+.executive-table td small{display:block;color:#627b8b;font-size:10px}.comparison-footnote{font-size:10px;color:#526c7e;padding:6px 5px}
+
+/* GeoCoast V6 · importación oficial RNC */
+.gc-rnc-upload {border:1px solid #d7dce2;background:#f7f9fc;border-radius:6px;padding:12px;margin:12px 0;}
+.gc-rnc-upload strong {display:block;color:#15345a;}
+.gc-rnc-upload input[type=file] {display:block;max-width:100%;margin:6px 0 8px;font-size:13px;}
+.gc-rnc-label {display:block;font-weight:600;font-size:13px;margin-top:8px;}
+
+/* Participación por componente: vista ejecutiva compacta de tres columnas. */
+.gc-cost-table-executive{table-layout:fixed!important;width:100%;font-size:11px}
+.gc-cost-table-executive th:nth-child(1),.gc-cost-table-executive td:nth-child(1){width:72px;text-align:left}
+.gc-cost-table-executive th:nth-child(2),.gc-cost-table-executive td:nth-child(2){width:auto;text-align:left}
+.gc-cost-table-executive th:nth-child(3),.gc-cost-table-executive td:nth-child(3){width:90px;text-align:right;font-weight:750;white-space:nowrap}
+.gc-cost-table-executive .gc-cost-subtotal td,.gc-cost-table-executive .gc-cost-total td{font-weight:800}
+
+
+/* Separación explícita de costos fijos y variables */
+.gc-cost-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:8px}.gc-cost-section{border:1px solid #dbe5ee;border-radius:10px;padding:8px;background:#fff}.gc-cost-section h5{margin:0 0 8px;color:#123d69;font-size:12px;display:flex;align-items:center;gap:6px}.gc-cost-table-executive th:nth-child(1),.gc-cost-table-executive td:nth-child(1){text-align:left}.gc-cost-table-executive th:nth-child(2),.gc-cost-table-executive td:nth-child(2){text-align:right;width:90px;font-weight:750;white-space:nowrap}.exec-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media(max-width:900px){.gc-cost-split,.exec-split{grid-template-columns:1fr}}
+
+/* GeoCost 2026.10 · Dos listas únicas con importe y % de participación. */
+.gc-cost-list-intro{padding:8px 2px 2px;color:#143b60;font-size:12px;line-height:1.35}
+.gc-cost-list-intro small{display:block;color:#667f95;font-size:10px;font-weight:400;margin-top:4px}
+.gc-cost-list-section{margin-top:9px!important;padding:9px!important}
+.gc-cost-list-section summary{font-weight:800;font-size:12px;color:#073b70}
+.gc-cost-list-head,.gc-cost-line,.gc-cost-list-total,.gc-cost-grand-total{display:grid;grid-template-columns:minmax(0,1fr) minmax(90px,110px) 58px;gap:5px;align-items:center}
+.gc-cost-list-head{font-size:9px;font-weight:800;color:#697f93;padding:8px 0 5px;border-bottom:1px solid #cbdbe9}
+.gc-cost-list-head span:not(:first-child){text-align:right}
+.gc-cost-list{margin:0;padding:0;list-style:none}
+.gc-cost-line{font-size:10px;line-height:1.3;border-bottom:1px solid #e5edf5;padding:6px 0;color:#23445e}
+.gc-cost-label{min-width:0;overflow-wrap:break-word}
+.gc-cost-money,.gc-cost-percent{white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums;font-size:10px;color:#0c345c}
+.gc-cost-list-total,.gc-cost-grand-total{font-size:11px;background:#eef4fc;color:#0b3158;padding:8px 5px;margin-top:5px;border-radius:5px}
+.gc-cost-list-total strong:nth-child(2),.gc-cost-list-total b,.gc-cost-grand-total strong,.gc-cost-grand-total b{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.gc-cost-grand-total{background:#e2efff;border:1px solid #b9d4f1;font-weight:800;margin:12px 0 7px}
+.gc-report-cost-group{border:1px solid #d5e0e8;border-radius:6px;padding:11px;background:#fff}
+.gc-report-cost-group h4{font-size:13px;color:#103d68;margin:0;padding:0 0 8px;border-bottom:2px solid #183fa7}
+.exec-page .gc-cost-line,.exec-page .gc-cost-list-head,.exec-page .gc-cost-list-total{font-size:11px}
+.exec-page .gc-cost-label{overflow-wrap:anywhere;white-space:normal}
+.exec-page .gc-cost-list{white-space:normal}
+.unit-btn:disabled{opacity:.38;filter:grayscale(1);cursor:not-allowed;box-shadow:none}
+#p-unidad .final-actions{margin-top:8px}
+#p-unidad .final-actions button{width:100%;font-size:11px}
+@media(max-width:900px){.exec-split{grid-template-columns:1fr!important}}
+@media print{.gc-report-cost-group{break-inside:avoid}.gc-cost-line{break-inside:avoid}}
+
+/* V8 · avisos de cobertura de casetas, legibilidad de costes netos */
+.gc-toll-status{background:#f0f5fa;border-left:3px solid #1566af;padding:7px;font-size:11px;line-height:1.4;margin:0 0 7px}.gc-toll-pending{border-left:3px solid #cf8b33;padding-left:6px}.gc-toll-cost-warning{padding:8px 10px;border-left:3px solid #c88420;color:#65431b;background:#fff8ec;border-radius:5px;font-size:11px;line-height:1.4}.gc-toll-manual{margin:8px 0;background:#fff;border:1px solid #d9e5ef;border-radius:8px;padding:8px}.gc-toll-manual>summary{cursor:pointer;font-weight:750;color:#28577a;font-size:11px}.toll-item small{display:block;color:#698298;font-size:10px}
+
+/* V10 · configuración del camión integrada en la selección de unidad; sin formulario adicional. */
+
+/* V11: cierre de presupuesto por viaje (no comparativo C/C’/B). */
+.gc-budget-margin{background:#f3f5fa;border-color:#d5dfee;margin-top:6px}
+.gc-budget-price{background:#dceeff;color:#062f62;border:2px solid #114bbc;margin-top:6px;font-size:11px}
+.gc-budget-price b{font-size:9px}
+@media(max-width:650px){.gc-cost-line,.gc-cost-list-total,.gc-cost-grand-total,.gc-cost-list-head{grid-template-columns:minmax(0,1fr) 84px 68px;gap:4px}}
+
+.gc-budget-margin,.gc-budget-price{grid-template-columns:minmax(0,1fr) minmax(88px,108px) minmax(80px,104px)}
+
+/* V12: referencias comerciales separadas del desglose fijo-variable. */
+.gc-tariff-references{margin-top:10px}
+.gc-tariff-references summary{font-weight:800;color:#063c69}
+.gc-ref-scroll{overflow-x:auto;max-width:100%;padding-top:6px}
+.gc-tariff-references .gc-ref-table{min-width:0;table-layout:fixed;width:100%;font-size:10px;border-collapse:collapse}
+.gc-tariff-references .gc-ref-table th,.gc-tariff-references .gc-ref-table td{padding:7px 4px;text-align:right;border-bottom:1px solid #e1e9f0;white-space:normal;overflow-wrap:anywhere}
+.gc-tariff-references .gc-ref-table th:first-child,.gc-tariff-references .gc-ref-table td:first-child{text-align:left}
+.gc-tier-inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin:8px 0}
+.gc-tier-inputs label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:700}
+.gc-tier-inputs small{font-size:10px;font-weight:400;color:#6c7f91}
+.gc-tier-inputs input{width:100%;box-sizing:border-box}
+.exec-page .gc-exec-refs td,.exec-page .gc-exec-refs th{text-align:right}
+.exec-page .gc-exec-refs td:first-child,.exec-page .gc-exec-refs th:first-child{text-align:left}
